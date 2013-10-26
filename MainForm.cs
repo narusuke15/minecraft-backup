@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using System.IO;
 
 namespace MCback
 {
@@ -18,6 +19,9 @@ namespace MCback
 	/// </summary>
 	public partial class MainForm : Form
 	{
+		string sourcePath;
+		string destinationPath;
+		
 		public MainForm()
 		{
 			//
@@ -35,9 +39,48 @@ namespace MCback
 			
 		}
 		
+		//backup button
 		void Button1Click(object sender, EventArgs e)
 		{
+			CopyAll();
+		}
+		
+		void FolderBrowserDialog1HelpRequest(object sender, EventArgs e)
+		{
 			
+		}
+		
+		void BtnSourceClick(object sender, EventArgs e)
+		{
+			 FolderBrowserDialog fbd = folderBrowserDialog1;
+			 DialogResult result = fbd.ShowDialog();
+			
+			 string[] files = Directory.GetFiles(fbd.SelectedPath);
+			 sourcePath = fbd.SelectedPath;
+			 System.Windows.Forms.MessageBox.Show("Selected " + sourcePath, "Message");
+		}
+		
+		void BtnSetDestinationClick(object sender, EventArgs e)
+		{
+			 FolderBrowserDialog fbd = folderBrowserDialog1;
+			 DialogResult result = fbd.ShowDialog();
+			 
+			 destinationPath = fbd.SelectedPath;
+			 System.Windows.Forms.MessageBox.Show("Selected " + destinationPath, "Message");
+		}
+		
+		void CopyAll () 
+		{
+			//Now Create all of the directories
+			foreach (string dirPath in Directory.GetDirectories(sourcePath, "*", 
+			    SearchOption.AllDirectories))
+			    Directory.CreateDirectory(dirPath.Replace(sourcePath, destinationPath));
+			/*
+			//Copy all the files
+			foreach (string newPath in Directory.GetFiles(sourcePath, "*.*", 
+			    SearchOption.AllDirectories))
+			    File.Copy(newPath, newPath.Replace(sourcePath, destinationPath));
+			*/		
 		}
 	}
 }

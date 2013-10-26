@@ -39,6 +39,9 @@ namespace MCback
 			this.label1 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
 			this.button1 = new System.Windows.Forms.Button();
+			this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+			this.btnSource = new System.Windows.Forms.Button();
+			this.btnSetDestination = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// label1
@@ -68,11 +71,37 @@ namespace MCback
 			this.button1.UseVisualStyleBackColor = true;
 			this.button1.Click += new System.EventHandler(this.Button1Click);
 			// 
+			// folderBrowserDialog1
+			// 
+			this.folderBrowserDialog1.HelpRequest += new System.EventHandler(this.FolderBrowserDialog1HelpRequest);
+			// 
+			// btnSource
+			// 
+			this.btnSource.Location = new System.Drawing.Point(146, 17);
+			this.btnSource.Name = "btnSource";
+			this.btnSource.Size = new System.Drawing.Size(75, 23);
+			this.btnSource.TabIndex = 3;
+			this.btnSource.Text = "set";
+			this.btnSource.UseVisualStyleBackColor = true;
+			this.btnSource.Click += new System.EventHandler(this.BtnSourceClick);
+			// 
+			// btnSetDestination
+			// 
+			this.btnSetDestination.Location = new System.Drawing.Point(146, 60);
+			this.btnSetDestination.Name = "btnSetDestination";
+			this.btnSetDestination.Size = new System.Drawing.Size(75, 23);
+			this.btnSetDestination.TabIndex = 4;
+			this.btnSetDestination.Text = "set";
+			this.btnSetDestination.UseVisualStyleBackColor = true;
+			this.btnSetDestination.Click += new System.EventHandler(this.BtnSetDestinationClick);
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(514, 277);
+			this.Controls.Add(this.btnSetDestination);
+			this.Controls.Add(this.btnSource);
 			this.Controls.Add(this.button1);
 			this.Controls.Add(this.label2);
 			this.Controls.Add(this.label1);
@@ -80,6 +109,9 @@ namespace MCback
 			this.Text = "MCback";
 			this.ResumeLayout(false);
 		}
+		private System.Windows.Forms.Button btnSetDestination;
+		private System.Windows.Forms.Button btnSource;
+		private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
 		private System.Windows.Forms.Button button1;
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Label label1;
