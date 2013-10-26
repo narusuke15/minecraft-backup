@@ -75,12 +75,13 @@ namespace MCback
 			foreach (string dirPath in Directory.GetDirectories(sourcePath, "*", 
 			    SearchOption.AllDirectories))
 			    Directory.CreateDirectory(dirPath.Replace(sourcePath, destinationPath));
-			/*
+			
 			//Copy all the files
 			foreach (string newPath in Directory.GetFiles(sourcePath, "*.*", 
 			    SearchOption.AllDirectories))
 			    File.Copy(newPath, newPath.Replace(sourcePath, destinationPath));
-			*/		
+			
+			System.Windows.Forms.MessageBox.Show("backup from :" + sourcePath +" to :" + destinationPath, "Message");
 		}
 	}
 }
