@@ -42,6 +42,8 @@ namespace MCback
 			this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
 			this.btnSource = new System.Windows.Forms.Button();
 			this.btnSetDestination = new System.Windows.Forms.Button();
+			this.lblSourcePath = new System.Windows.Forms.Label();
+			this.lblDestinationPath = new System.Windows.Forms.Label();
 			this.SuspendLayout();
 			// 
 			// label1
@@ -95,11 +97,29 @@ namespace MCback
 			this.btnSetDestination.UseVisualStyleBackColor = true;
 			this.btnSetDestination.Click += new System.EventHandler(this.BtnSetDestinationClick);
 			// 
+			// lblSourcePath
+			// 
+			this.lblSourcePath.Location = new System.Drawing.Point(227, 22);
+			this.lblSourcePath.Name = "lblSourcePath";
+			this.lblSourcePath.Size = new System.Drawing.Size(252, 23);
+			this.lblSourcePath.TabIndex = 5;
+			this.lblSourcePath.Text = "path";
+			// 
+			// lblDestinationPath
+			// 
+			this.lblDestinationPath.Location = new System.Drawing.Point(227, 65);
+			this.lblDestinationPath.Name = "lblDestinationPath";
+			this.lblDestinationPath.Size = new System.Drawing.Size(252, 23);
+			this.lblDestinationPath.TabIndex = 6;
+			this.lblDestinationPath.Text = "path";
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(514, 277);
+			this.Controls.Add(this.lblDestinationPath);
+			this.Controls.Add(this.lblSourcePath);
 			this.Controls.Add(this.btnSetDestination);
 			this.Controls.Add(this.btnSource);
 			this.Controls.Add(this.button1);
@@ -109,6 +129,8 @@ namespace MCback
 			this.Text = "MCback";
 			this.ResumeLayout(false);
 		}
+		private System.Windows.Forms.Label lblDestinationPath;
+		private System.Windows.Forms.Label lblSourcePath;
 		private System.Windows.Forms.Button btnSetDestination;
 		private System.Windows.Forms.Button btnSource;
 		private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
