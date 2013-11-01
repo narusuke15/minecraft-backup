@@ -44,6 +44,7 @@ namespace MCback
 			this.btnSetDestination = new System.Windows.Forms.Button();
 			this.lblSourcePath = new System.Windows.Forms.Label();
 			this.lblDestinationPath = new System.Windows.Forms.Label();
+			this.folderBrowserDialog2 = new System.Windows.Forms.FolderBrowserDialog();
 			this.SuspendLayout();
 			// 
 			// label1
@@ -129,6 +130,7 @@ namespace MCback
 			this.Text = "MCback";
 			this.ResumeLayout(false);
 		}
+		private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog2;
 		private System.Windows.Forms.Label lblDestinationPath;
 		private System.Windows.Forms.Label lblSourcePath;
 		private System.Windows.Forms.Button btnSetDestination;
