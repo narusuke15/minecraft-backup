@@ -22,6 +22,7 @@ namespace MCback
 		const string CONFIGFILES = ".config";
 		string sourcePath;		//store source directory
 		string destinationPath;	//store destination directory
+		string backupFolder = "backup"; 
 		
 		public MainForm()
 		{
@@ -43,8 +44,8 @@ namespace MCback
 		//backup button
 		void Button1Click(object sender, EventArgs e)
 		{
-			Copy(sourcePath, destinationPath);
-			System.Windows.Forms.MessageBox.Show("backup from :" + sourcePath +" to :" + destinationPath, "Message");
+			backupFolder = txtFolder.Text;
+			Backup();
 			
 		}
 		
@@ -61,7 +62,7 @@ namespace MCback
 			
 			 string[] files = Directory.GetFiles(fbd.SelectedPath);
 			 sourcePath = fbd.SelectedPath;
-			 System.Windows.Forms.MessageBox.Show("Selected " + sourcePath, "Message");
+			 //System.Windows.Forms.MessageBox.Show("Selected " + sourcePath, "Message");
 			 UpdateSourceLabel();
 			 //test			
 			 SaveConfigFile();
@@ -74,20 +75,42 @@ namespace MCback
 			 DialogResult result = fbd.ShowDialog();
 			 
 			 destinationPath = fbd.SelectedPath;
-			 System.Windows.Forms.MessageBox.Show("Selected " + destinationPath, "Message");
+			 //System.Windows.Forms.MessageBox.Show("Selected " + destinationPath, "Message");
 			 UpdateDestinationLabel();
 			 SaveConfigFile();
 		}
-		
+
+		void Backup () {
+			string newFolder = destinationPath+"/"+backupFolder;
+				if(!Directory.Exists(newFolder)){
+				Directory.CreateDirectory(newFolder);
+				Copy(sourcePath,newFolder);
+				MessageBox.Show("backup created.","Message");
+			}else{
+				DialogResult dialogResult = MessageBox.Show("Directory exist. Replace backup?", "Backup directory exist", MessageBoxButtons.YesNo);
+				if(dialogResult == DialogResult.Yes)
+				{
+					Directory.Delete(newFolder,true);
+					Directory.CreateDirectory(newFolder);
+					Copy(sourcePath,newFolder);
+					MessageBox.Show("backup created.","Message");
+				}else if (dialogResult == DialogResult.No)
+				{
+					MessageBox.Show("backup abort.","Message");
+				}
+			}
+		}
 		void Copy(string sourceDir, string targetDir)
 		{
-		    Directory.CreateDirectory(targetDir);
+			
+			foreach (string dirPath in Directory.GetDirectories(sourceDir, "*", 
+		    SearchOption.AllDirectories))
+		    Directory.CreateDirectory(dirPath.Replace(sourceDir, targetDir));
 		
-		    foreach(var file in Directory.GetFiles(sourceDir))
-		        File.Copy(file, Path.Combine(targetDir, Path.GetFileName(file)));
-		
-		    foreach(var directory in Directory.GetDirectories(sourceDir))
-		        Copy(directory, Path.Combine(targetDir, Path.GetFileName(directory)));
+			//Copy all the files
+			foreach (string newPath in Directory.GetFiles(sourceDir, "*.*", 
+		    SearchOption.AllDirectories))
+		    File.Copy(newPath, newPath.Replace(sourceDir, targetDir));
 		}
 		
 		void UpdateDestinationLabel () {
@@ -114,7 +137,7 @@ namespace MCback
 				sourcePath = stReader.ReadLine();
 				destinationPath = stReader.ReadLine();
 				stReader.Close();
-				System.Windows.Forms.MessageBox.Show( "sr :"+sourcePath + "  ds :"+destinationPath , "Message");
+				//System.Windows.Forms.MessageBox.Show( destinationPath+backupFolder , "Message");
 			}else{
 				//set deafualt path if don't have any
 				System.Windows.Forms.MessageBox.Show( "Config files not founded." + filePath , "Message");

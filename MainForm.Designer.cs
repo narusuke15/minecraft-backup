@@ -45,6 +45,8 @@ namespace MCback
 			this.lblSourcePath = new System.Windows.Forms.Label();
 			this.lblDestinationPath = new System.Windows.Forms.Label();
 			this.folderBrowserDialog2 = new System.Windows.Forms.FolderBrowserDialog();
+			this.txtFolder = new System.Windows.Forms.TextBox();
+			this.label3 = new System.Windows.Forms.Label();
 			this.SuspendLayout();
 			// 
 			// label1
@@ -66,7 +68,7 @@ namespace MCback
 			// 
 			// button1
 			// 
-			this.button1.Location = new System.Drawing.Point(218, 142);
+			this.button1.Location = new System.Drawing.Point(404, 99);
 			this.button1.Name = "button1";
 			this.button1.Size = new System.Drawing.Size(75, 23);
 			this.button1.TabIndex = 2;
@@ -114,11 +116,29 @@ namespace MCback
 			this.lblDestinationPath.TabIndex = 6;
 			this.lblDestinationPath.Text = "path";
 			// 
+			// txtFolder
+			// 
+			this.txtFolder.Location = new System.Drawing.Point(81, 102);
+			this.txtFolder.Name = "txtFolder";
+			this.txtFolder.Size = new System.Drawing.Size(303, 20);
+			this.txtFolder.TabIndex = 7;
+			this.txtFolder.Text = "World_10_10_14";
+			// 
+			// label3
+			// 
+			this.label3.Location = new System.Drawing.Point(12, 105);
+			this.label3.Name = "label3";
+			this.label3.Size = new System.Drawing.Size(63, 23);
+			this.label3.TabIndex = 8;
+			this.label3.Text = "folder name";
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(514, 277);
+			this.ClientSize = new System.Drawing.Size(490, 135);
+			this.Controls.Add(this.label3);
+			this.Controls.Add(this.txtFolder);
 			this.Controls.Add(this.lblDestinationPath);
 			this.Controls.Add(this.lblSourcePath);
 			this.Controls.Add(this.btnSetDestination);
@@ -129,7 +149,10 @@ namespace MCback
 			this.Name = "MainForm";
 			this.Text = "MCback";
 			this.ResumeLayout(false);
+			this.PerformLayout();
 		}
+		private System.Windows.Forms.Label label3;
+		private System.Windows.Forms.TextBox txtFolder;
 		private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog2;
 		private System.Windows.Forms.Label lblDestinationPath;
 		private System.Windows.Forms.Label lblSourcePath;
