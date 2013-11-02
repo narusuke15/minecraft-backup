@@ -63,7 +63,10 @@ namespace MCback
 		void BtnSourceClick(object sender, EventArgs e)
 		{
 			 FolderBrowserDialog fbd = folderBrowserDialog1;
-			 fbd.SelectedPath = sourcePath ;
+			 
+			 fbd.RootFolder = System.Environment.SpecialFolder.MyComputer;
+			 fbd.SelectedPath = @sourcePath ;
+			 
 			 DialogResult result = fbd.ShowDialog();
 			
 			 string[] files = Directory.GetFiles(fbd.SelectedPath);
@@ -77,7 +80,11 @@ namespace MCback
 		void BtnSetDestinationClick(object sender, EventArgs e)
 		{
 			 FolderBrowserDialog fbd = folderBrowserDialog2;
-			 fbd.SelectedPath = destinationPath ;
+			 
+			 fbd.RootFolder = System.Environment.SpecialFolder.MyComputer;
+			 fbd.SelectedPath = @destinationPath ;
+			 fbd.ShowNewFolderButton = true;
+			 
 			 DialogResult result = fbd.ShowDialog();
 			 
 			 destinationPath = fbd.SelectedPath;
