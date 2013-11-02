@@ -184,5 +184,13 @@ namespace MCback
 		{
 			System.Diagnostics.Process.Start(@destinationPath);
 		}
+		
+		#region form
+		void MainFormLoad(object sender, EventArgs e)
+		{
+			
+		}
+		
+		#endregion
 	}
 }

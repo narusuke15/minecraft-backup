@@ -173,6 +173,7 @@ namespace MCback
 			this.Controls.Add(this.label1);
 			this.Name = "MainForm";
 			this.Text = "MCback";
+			this.Load += new System.EventHandler(this.MainFormLoad);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 		}
