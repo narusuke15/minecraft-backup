@@ -123,6 +123,7 @@ namespace MCback
 			this.txtFolder.Size = new System.Drawing.Size(303, 20);
 			this.txtFolder.TabIndex = 7;
 			this.txtFolder.Text = "World_10_10_14";
+			this.txtFolder.TextChanged += new System.EventHandler(this.TxtFolderTextChanged);
 			// 
 			// label3
 			// 

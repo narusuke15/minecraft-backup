@@ -22,7 +22,7 @@ namespace MCback
 		const string CONFIGFILES = ".config";
 		string sourcePath;		//store source directory
 		string destinationPath;	//store destination directory
-		string backupFolder = "backup"; 
+		string backupFolder ; //backup brach folder 
 		
 		public MainForm()
 		{
@@ -34,6 +34,11 @@ namespace MCback
 			OpenConfigFile();
 			UpdateSourceLabel();
 			UpdateDestinationLabel();
+			UpdateFolderText();
+		}
+		
+		private void OnApplicationExit(object sender, EventArgs e) {
+			SaveConfigFile();
 		}
 		
 		void Label1Click(object sender, EventArgs e)
@@ -46,6 +51,7 @@ namespace MCback
 		{
 			backupFolder = txtFolder.Text;
 			Backup();
+			SaveConfigFile();
 			
 		}
 		
@@ -65,7 +71,7 @@ namespace MCback
 			 //System.Windows.Forms.MessageBox.Show("Selected " + sourcePath, "Message");
 			 UpdateSourceLabel();
 			 //test			
-			 SaveConfigFile();
+			 //SaveConfigFile();
 		}
 		
 		void BtnSetDestinationClick(object sender, EventArgs e)
@@ -77,7 +83,7 @@ namespace MCback
 			 destinationPath = fbd.SelectedPath;
 			 //System.Windows.Forms.MessageBox.Show("Selected " + destinationPath, "Message");
 			 UpdateDestinationLabel();
-			 SaveConfigFile();
+			 //SaveConfigFile();
 		}
 
 		void Backup () {
@@ -121,11 +127,16 @@ namespace MCback
 			lblSourcePath.Text = sourcePath;
 		}
 		
+		void UpdateFolderText () {
+			txtFolder.Text = backupFolder;
+		}
+		
 		#region config files
 		void SaveConfigFile () {
 			StreamWriter st = File.CreateText(CONFIGFILES);
 			st.WriteLine(sourcePath);
 			st.WriteLine(destinationPath);
+			st.WriteLine(backupFolder);
 			st.Close();
 		}
 		
@@ -136,6 +147,7 @@ namespace MCback
 				StreamReader stReader = new StreamReader(filePath);
 				sourcePath = stReader.ReadLine();
 				destinationPath = stReader.ReadLine();
+				backupFolder = stReader.ReadLine();
 				stReader.Close();
 				//System.Windows.Forms.MessageBox.Show( destinationPath+backupFolder , "Message");
 			}else{
@@ -143,11 +155,17 @@ namespace MCback
 				System.Windows.Forms.MessageBox.Show( "Config files not founded." + filePath , "Message");
 				sourcePath = "C:/";
 				destinationPath = "C:/";
+				backupFolder = "backup";
 			}
 			
 		}
 		#endregion
 		
 		
+		
+		void TxtFolderTextChanged(object sender, EventArgs e)
+		{
+			backupFolder = txtFolder.Text;
+		}
 	}
 }
