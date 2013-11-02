@@ -174,6 +174,7 @@ namespace MCback
 			this.Name = "MainForm";
 			this.Text = "MCback";
 			this.Load += new System.EventHandler(this.MainFormLoad);
+			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler (this.MainFormClosing);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 		}

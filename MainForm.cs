@@ -191,6 +191,21 @@ namespace MCback
 			
 		}
 		
+		void MainFormClosing (object sender, EventArgs e) {
+		
+			//MessageBox.Show("close?","Messgae");
+
+			
+			DialogResult dialogResult = MessageBox.Show("Save config file before exit?", "exit", MessageBoxButtons.YesNo);
+			if(dialogResult == DialogResult.Yes)
+			{
+				SaveConfigFile();
+			}else if (dialogResult == DialogResult.No)
+			{
+				
+			}
+		    
+		}
 		#endregion
 	}
 }
