@@ -47,6 +47,8 @@ namespace MCback
 			this.folderBrowserDialog2 = new System.Windows.Forms.FolderBrowserDialog();
 			this.txtFolder = new System.Windows.Forms.TextBox();
 			this.label3 = new System.Windows.Forms.Label();
+			this.btnToSource = new System.Windows.Forms.Button();
+			this.btnToDestination = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// label1
@@ -133,11 +135,33 @@ namespace MCback
 			this.label3.TabIndex = 8;
 			this.label3.Text = "folder name";
 			// 
+			// btnToSource
+			// 
+			this.btnToSource.Location = new System.Drawing.Point(113, 17);
+			this.btnToSource.Name = "btnToSource";
+			this.btnToSource.Size = new System.Drawing.Size(27, 23);
+			this.btnToSource.TabIndex = 9;
+			this.btnToSource.Text = "to";
+			this.btnToSource.UseVisualStyleBackColor = true;
+			this.btnToSource.Click += new System.EventHandler(this.BtnToSourceClick);
+			// 
+			// btnToDestination
+			// 
+			this.btnToDestination.Location = new System.Drawing.Point(113, 60);
+			this.btnToDestination.Name = "btnToDestination";
+			this.btnToDestination.Size = new System.Drawing.Size(27, 23);
+			this.btnToDestination.TabIndex = 10;
+			this.btnToDestination.Text = "to";
+			this.btnToDestination.UseVisualStyleBackColor = true;
+			this.btnToDestination.Click += new System.EventHandler(this.BtnToDestinationClick);
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(490, 135);
+			this.Controls.Add(this.btnToDestination);
+			this.Controls.Add(this.btnToSource);
 			this.Controls.Add(this.label3);
 			this.Controls.Add(this.txtFolder);
 			this.Controls.Add(this.lblDestinationPath);
@@ -152,6 +176,8 @@ namespace MCback
 			this.ResumeLayout(false);
 			this.PerformLayout();
 		}
+		private System.Windows.Forms.Button btnToDestination;
+		private System.Windows.Forms.Button btnToSource;
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.TextBox txtFolder;
 		private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog2;

@@ -167,5 +167,15 @@ namespace MCback
 		{
 			backupFolder = txtFolder.Text;
 		}
+		
+		void BtnToSourceClick(object sender, EventArgs e)
+		{
+			System.Diagnostics.Process.Start(@sourcePath);
+		}
+		
+		void BtnToDestinationClick(object sender, EventArgs e)
+		{
+			System.Diagnostics.Process.Start(@destinationPath);
+		}
 	}
 }
