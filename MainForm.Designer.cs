@@ -49,6 +49,7 @@ namespace MCback
 			this.label3 = new System.Windows.Forms.Label();
 			this.btnToSource = new System.Windows.Forms.Button();
 			this.btnToDestination = new System.Windows.Forms.Button();
+			this.lblBackup = new System.Windows.Forms.Label();
 			this.SuspendLayout();
 			// 
 			// label1
@@ -62,7 +63,7 @@ namespace MCback
 			// 
 			// label2
 			// 
-			this.label2.Location = new System.Drawing.Point(12, 65);
+			this.label2.Location = new System.Drawing.Point(12, 60);
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(100, 23);
 			this.label2.TabIndex = 1;
@@ -94,7 +95,7 @@ namespace MCback
 			// 
 			// btnSetDestination
 			// 
-			this.btnSetDestination.Location = new System.Drawing.Point(146, 60);
+			this.btnSetDestination.Location = new System.Drawing.Point(146, 55);
 			this.btnSetDestination.Name = "btnSetDestination";
 			this.btnSetDestination.Size = new System.Drawing.Size(75, 23);
 			this.btnSetDestination.TabIndex = 4;
@@ -112,7 +113,7 @@ namespace MCback
 			// 
 			// lblDestinationPath
 			// 
-			this.lblDestinationPath.Location = new System.Drawing.Point(227, 65);
+			this.lblDestinationPath.Location = new System.Drawing.Point(227, 60);
 			this.lblDestinationPath.Name = "lblDestinationPath";
 			this.lblDestinationPath.Size = new System.Drawing.Size(252, 23);
 			this.lblDestinationPath.TabIndex = 6;
@@ -147,7 +148,7 @@ namespace MCback
 			// 
 			// btnToDestination
 			// 
-			this.btnToDestination.Location = new System.Drawing.Point(113, 60);
+			this.btnToDestination.Location = new System.Drawing.Point(113, 55);
 			this.btnToDestination.Name = "btnToDestination";
 			this.btnToDestination.Size = new System.Drawing.Size(27, 23);
 			this.btnToDestination.TabIndex = 10;
@@ -155,11 +156,21 @@ namespace MCback
 			this.btnToDestination.UseVisualStyleBackColor = true;
 			this.btnToDestination.Click += new System.EventHandler(this.BtnToDestinationClick);
 			// 
+			// lblBackup
+			// 
+			this.lblBackup.Location = new System.Drawing.Point(12, 135);
+			this.lblBackup.Name = "lblBackup";
+			this.lblBackup.Size = new System.Drawing.Size(467, 23);
+			this.lblBackup.TabIndex = 11;
+			this.lblBackup.Text = "Last backup folder : none";
+			this.lblBackup.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(490, 135);
+			this.ClientSize = new System.Drawing.Size(490, 167);
+			this.Controls.Add(this.lblBackup);
 			this.Controls.Add(this.btnToDestination);
 			this.Controls.Add(this.btnToSource);
 			this.Controls.Add(this.label3);
@@ -173,11 +184,12 @@ namespace MCback
 			this.Controls.Add(this.label1);
 			this.Name = "MainForm";
 			this.Text = "MCback";
+			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainFormClosing);
 			this.Load += new System.EventHandler(this.MainFormLoad);
-			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler (this.MainFormClosing);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 		}
+		private System.Windows.Forms.Label lblBackup;
 		private System.Windows.Forms.Button btnToDestination;
 		private System.Windows.Forms.Button btnToSource;
 		private System.Windows.Forms.Label label3;

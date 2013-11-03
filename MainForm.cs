@@ -20,6 +20,9 @@ namespace MCback
 	public partial class MainForm : Form
 	{
 		const string CONFIGFILES = ".config";
+		const string LASTBACKUP = "backup.config";
+		const string LASTLBL = "Last backup folder : ";
+			
 		string sourcePath;		//store source directory
 		string destinationPath;	//store destination directory
 		string backupFolder ; //backup brach folder 
@@ -32,6 +35,7 @@ namespace MCback
 			InitializeComponent();
 			
 			OpenConfigFile();
+			OpenLastBackup();
 			UpdateSourceLabel();
 			UpdateDestinationLabel();
 			UpdateFolderText();
@@ -52,6 +56,7 @@ namespace MCback
 			backupFolder = txtFolder.Text;
 			Backup();
 			SaveConfigFile();
+			SaveLastBackup(backupFolder);
 			
 		}
 		
@@ -165,6 +170,27 @@ namespace MCback
 				backupFolder = "backup";
 			}
 			
+		}
+		
+		void SaveLastBackup (string name) {
+		
+			StreamWriter st = File.CreateText(LASTBACKUP);
+			st.WriteLine(backupFolder);
+			st.Close();
+			lblBackup.Text = LASTLBL + name;
+		}
+		
+		void OpenLastBackup () {
+			
+			string filePath = Directory.GetCurrentDirectory()+ "/"+ LASTBACKUP;
+			if(File.Exists(filePath)){
+				StreamReader stReader = new StreamReader(filePath);
+				string read = stReader.ReadLine();
+				stReader.Close();
+				lblBackup.Text = LASTLBL + read;
+			}else{
+				lblBackup.Text = LASTLBL + "NONE";
+			}
 		}
 		#endregion
 		
