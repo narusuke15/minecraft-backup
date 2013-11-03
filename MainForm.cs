@@ -26,6 +26,7 @@ namespace MCback
 		string sourcePath;		//store source directory
 		string destinationPath;	//store destination directory
 		string backupFolder ; //backup brach folder 
+		bool   configChange = false;
 		
 		public MainForm()
 		{
@@ -76,10 +77,9 @@ namespace MCback
 			
 			 string[] files = Directory.GetFiles(fbd.SelectedPath);
 			 sourcePath = fbd.SelectedPath;
-			 //System.Windows.Forms.MessageBox.Show("Selected " + sourcePath, "Message");
 			 UpdateSourceLabel();
-			 //test			
-			 //SaveConfigFile();
+			 configChange = true;
+			
 		}
 		
 		void BtnSetDestinationClick(object sender, EventArgs e)
@@ -93,9 +93,8 @@ namespace MCback
 			 DialogResult result = fbd.ShowDialog();
 			 
 			 destinationPath = fbd.SelectedPath;
-			 //System.Windows.Forms.MessageBox.Show("Selected " + destinationPath, "Message");
 			 UpdateDestinationLabel();
-			 //SaveConfigFile();
+			 configChange = true;
 		}
 
 		void Backup () {
@@ -219,18 +218,16 @@ namespace MCback
 		
 		void MainFormClosing (object sender, EventArgs e) {
 		
-			//MessageBox.Show("close?","Messgae");
-
-			
-			DialogResult dialogResult = MessageBox.Show("Save config file before exit?", "exit", MessageBoxButtons.YesNo);
-			if(dialogResult == DialogResult.Yes)
-			{
-				SaveConfigFile();
-			}else if (dialogResult == DialogResult.No)
-			{
-				
+			if(configChange){
+				DialogResult dialogResult = MessageBox.Show("Save config file before exit?", "exit", MessageBoxButtons.YesNo);
+				if(dialogResult == DialogResult.Yes)
+				{
+					SaveConfigFile();
+				}else if (dialogResult == DialogResult.No)
+				{
+					
+				}
 			}
-		    
 		}
 		#endregion
 	}
