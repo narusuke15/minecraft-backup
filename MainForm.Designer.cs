@@ -50,6 +50,7 @@ namespace MCback
 			this.btnToSource = new System.Windows.Forms.Button();
 			this.btnToDestination = new System.Windows.Forms.Button();
 			this.lblBackup = new System.Windows.Forms.Label();
+			this.btnAddTime = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// label1
@@ -123,7 +124,7 @@ namespace MCback
 			// 
 			this.txtFolder.Location = new System.Drawing.Point(81, 102);
 			this.txtFolder.Name = "txtFolder";
-			this.txtFolder.Size = new System.Drawing.Size(303, 20);
+			this.txtFolder.Size = new System.Drawing.Size(258, 20);
 			this.txtFolder.TabIndex = 7;
 			this.txtFolder.Text = "World_10_10_14";
 			this.txtFolder.TextChanged += new System.EventHandler(this.TxtFolderTextChanged);
@@ -165,11 +166,24 @@ namespace MCback
 			this.lblBackup.Text = "Last backup folder : none";
 			this.lblBackup.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
+			// btnAddTime
+			// 
+			this.btnAddTime.Location = new System.Drawing.Point(345, 99);
+			this.btnAddTime.Name = "btnAddTime";
+			this.btnAddTime.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+			this.btnAddTime.Size = new System.Drawing.Size(53, 23);
+			this.btnAddTime.TabIndex = 12;
+			this.btnAddTime.Text = "+date";
+			this.btnAddTime.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			this.btnAddTime.UseVisualStyleBackColor = true;
+			this.btnAddTime.Click += new System.EventHandler(this.BtnAddTimeClick);
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(490, 167);
+			this.Controls.Add(this.btnAddTime);
 			this.Controls.Add(this.lblBackup);
 			this.Controls.Add(this.btnToDestination);
 			this.Controls.Add(this.btnToSource);
@@ -189,6 +203,8 @@ namespace MCback
 			this.ResumeLayout(false);
 			this.PerformLayout();
 		}
+		private System.Windows.Forms.Button btnAddTime;
+
 		private System.Windows.Forms.Label lblBackup;
 		private System.Windows.Forms.Button btnToDestination;
 		private System.Windows.Forms.Button btnToSource;
@@ -203,5 +219,7 @@ namespace MCback
 		private System.Windows.Forms.Button button1;
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Label label1;
+		
+		
 	}
 }

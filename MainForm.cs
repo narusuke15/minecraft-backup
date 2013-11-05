@@ -140,6 +140,7 @@ namespace MCback
 		
 		void UpdateFolderText () {
 			txtFolder.Text = backupFolder;
+			
 		}
 		
 		#region config files
@@ -230,5 +231,10 @@ namespace MCback
 			}
 		}
 		#endregion
+		
+		void BtnAddTimeClick(object sender, System.EventArgs e)
+		{
+			txtFolder.Text += DateTime.Today.ToShortDateString();
+		}
 	}
 }
