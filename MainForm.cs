@@ -25,7 +25,7 @@ namespace MCback
 			
 		string sourcePath;		//store source directory
 		string destinationPath;	//store destination directory
-		string backupFolder ; //backup brach folder 
+		string backupFolder; //backup brach folder 
 		MCConfig config = new MCConfig();
 		bool   configChange = false;
 		
@@ -136,7 +136,7 @@ namespace MCback
 		}
 		
 		void UpdateSourceLabel () {
-			lblSourcePath.Text = sourcePath;
+			lblSourcePath.Text = sourcePath;//MCConfigManager.instance.currentConfig.sourcePath;
 		}
 		
 		void UpdateFolderText () {
