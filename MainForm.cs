@@ -26,6 +26,7 @@ namespace MCback
 		string sourcePath;		//store source directory
 		string destinationPath;	//store destination directory
 		string backupFolder ; //backup brach folder 
+		MCConfig config = new MCConfig();
 		bool   configChange = false;
 		
 		public MainForm()
