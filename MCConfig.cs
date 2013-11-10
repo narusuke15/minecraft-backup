@@ -21,7 +21,7 @@ namespace MCback
 	    public string sourcePath {
 	    	get{
 				if(_sourcePath != null)
-				return _sourcePath;
+					return _sourcePath;
 				else return "C:/";				
 			}
 	        set{ _sourcePath = value; }
@@ -29,20 +29,34 @@ namespace MCback
 		
 		private string _destinationPath;	//store destination directory
 		public string destinationPath {
-	          get{ return _destinationPath;  }
+	        get{ 
+				if(_destinationPath != null)
+					return _destinationPath; 
+				else return "C:/";
+			}
 	          set{ _destinationPath = value; }
 	    }
 		
 		private string _lastBackupFolder;    //last backup folder
 		public string lastBackupFolder {
-	          get{ return _lastBackupFolder;  }
-	          set{ _lastBackupFolder = value; }
+	        get{
+				if(_lastBackupFolder != null)
+					return _lastBackupFolder;  
+				else
+					return "NONE";
+			}
+	        set{ _lastBackupFolder = value; }
 	    }
 		
 		private string _saveFolderName;   //text field foldername
 		public string saveFolderName {
-	          get{ return _saveFolderName;  }
-	          set{ _saveFolderName = value; }
+	        get{ 
+				if(_saveFolderName != null)
+					return _saveFolderName;
+				else
+					return "backup";					
+			}
+	        set{ _saveFolderName = value; }
 	    }
 		#endregion
 		
