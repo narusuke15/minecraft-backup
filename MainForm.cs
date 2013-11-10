@@ -34,12 +34,14 @@ namespace MCback
 			//
 			InitializeComponent();
 			
+			//load config
 			OpenConfigFile();
-
+			//update program from config data
 			UpdateLastBackup();
 			UpdateSourceLabel();
 			UpdateDestinationLabel();
 			UpdateFolderText();
+			
 		}
 		
 		private void OnApplicationExit(object sender, EventArgs e) {
@@ -226,6 +228,7 @@ namespace MCback
 			}catch{
 				Debug.WriteLine("tryload failed");
 			}
+			
 		}
 	}
 }
