@@ -146,5 +146,9 @@ namespace MCback
 		}
 		
 		#endregion
+		
+		public string GetBackupDateTime () {
+			return DateTime.Today.Day+"_"+DateTime.Today.Month+"_"+DateTime.Today.Year;
+		}
 	}
 }

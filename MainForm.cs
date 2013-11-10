@@ -144,7 +144,8 @@ namespace MCback
 		
 		void BtnAddTimeClick(object sender, System.EventArgs e)
 		{
-			txtFolder.Text += DateTime.Today.ToShortDateString();
+			txtFolder.Text += MCConfigManager.instance.GetBackupDateTime();
+			//txtFolder.Text += DateTime.Today.ToShortDateString();
 		}
 		
 		void BtnSourceClick(object sender, EventArgs e)
