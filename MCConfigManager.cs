@@ -33,8 +33,8 @@ namespace MCback
 		
 		#region data
 		//default
-		private readonly string DEFAULT_SOURCEPATH = "C:/";
-		private readonly string DEFAULT_DESTINATIONPATH = "C:/";
+		private readonly string DEFAULT_SOURCEPATH = Directory.GetCurrentDirectory();//"C:/";
+		private readonly string DEFAULT_DESTINATIONPATH = Directory.GetCurrentDirectory();//"C:/";
 		private readonly string DEFAULT_LASTBACKUPFOLDER = "NONE";
 		private readonly string DEFAULT_SAVEFOLDERNAME = "backup";
 		
