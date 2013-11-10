@@ -181,6 +181,17 @@ namespace MCback
 		//backup button
 		void Button1Click(object sender, EventArgs e)
 		{
+			
+			DialogResult dialogResult = MessageBox.Show("Do you want to backup files form " + config.sourcePath + "  to  " + config.destinationPath + "?"
+			                                            , "confirm backup", MessageBoxButtons.OKCancel);
+			if(dialogResult == DialogResult.Yes)
+			{
+				SaveConfigFile();
+			}else if (dialogResult == DialogResult.No)
+			{
+				
+			}
+				
 			config.saveFolderName = txtFolder.Text; //update folder name before backup
 			Backup();
 			

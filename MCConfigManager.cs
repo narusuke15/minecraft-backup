@@ -49,7 +49,7 @@ namespace MCback
 	      	}
 	   	}
 		
-		private bool _isHiddenConfigFile;  
+		private bool _isHiddenConfigFile =false;  
 			
 		private const string DEFUALT_CONFIG_FILENAME = ".config";
 		
@@ -108,7 +108,7 @@ namespace MCback
 			StreamWriter st = File.CreateText(fileName);
 			st.WriteLine(text);
 			st.Close();
-			File.SetAttributes(fileName, FileAttributes.Hidden);
+			//File.SetAttributes(fileName, FileAttributes.Hidden);
 		}
 		
 		public void WriteFile (string text) {
@@ -138,7 +138,8 @@ namespace MCback
 		//
 		public void HiddenFile (string directory, string fileName) {
 			string path = directory +"/"+ fileName;
-			File.SetAttributes(path, File.GetAttributes(path) | FileAttributes.Hidden);
+			if(_isHiddenConfigFile)
+				File.SetAttributes(path, File.GetAttributes(path) | FileAttributes.Hidden);
 		}
 		public void HiddenFile () {
 			HiddenFile(Directory.GetCurrentDirectory(), DEFUALT_CONFIG_FILENAME);
