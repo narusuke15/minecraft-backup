@@ -34,8 +34,6 @@ namespace MCback
 			//
 			InitializeComponent();
 			
-			//TrySave();
-			
 			OpenConfigFile();
 
 			UpdateLastBackup();
@@ -149,25 +147,25 @@ namespace MCback
 		
 		void BtnSourceClick(object sender, EventArgs e)
 		{
-			 FolderBrowserDialog fbd = folderBrowserDialog1;
-			 
-			 fbd.RootFolder = System.Environment.SpecialFolder.MyComputer;
-			 fbd.SelectedPath = @MCConfigManager.instance.currentConfig.sourcePath ;
-			 
-			 DialogResult result = fbd.ShowDialog();
 			
-			 string[] files = Directory.GetFiles(fbd.SelectedPath);
-			 MCConfigManager.instance.currentConfig.sourcePath = fbd.SelectedPath;
-			 UpdateSourceLabel();
-			 configChange = true;
+			FolderBrowserDialog fbd = folderBrowserDialog1;
+		 
+			//fbd.RootFolder = System.Environment.SpecialFolder.MyComputer;
+			fbd.SelectedPath = @MCConfigManager.instance.currentConfig.sourcePath ;
+			fbd.ShowNewFolderButton = false;
+			DialogResult result = fbd.ShowDialog();
 			
+			string[] files = Directory.GetFiles(fbd.SelectedPath);
+			MCConfigManager.instance.currentConfig.sourcePath = fbd.SelectedPath;
+			UpdateSourceLabel();
+			configChange = true;
 		}
 		
 		void BtnSetDestinationClick(object sender, EventArgs e)
 		{
 			 FolderBrowserDialog fbd = folderBrowserDialog2;
 			 
-			 fbd.RootFolder = System.Environment.SpecialFolder.MyComputer;
+			 //fbd.RootFolder = System.Environment.SpecialFolder.MyComputer;
 			 fbd.SelectedPath = @config.destinationPath ;
 			 fbd.ShowNewFolderButton = true;
 			 

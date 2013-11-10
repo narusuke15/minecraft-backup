@@ -53,8 +53,7 @@ namespace MCback
 			
 		private const string DEFUALT_CONFIG_FILENAME = ".config";
 		
-		#endregion
-		
+		#endregion		
 		
 		#region Config
 		public void SaveConfig (string fileName, MCConfig config) {
@@ -109,7 +108,7 @@ namespace MCback
 			StreamWriter st = File.CreateText(fileName);
 			st.WriteLine(text);
 			st.Close();
-			//File.SetAttributes(fileName, FileAttributes.Hidden);
+			File.SetAttributes(fileName, FileAttributes.Hidden);
 		}
 		
 		public void WriteFile (string text) {
