@@ -60,7 +60,6 @@ namespace MCback
 			this.label1.Size = new System.Drawing.Size(89, 13);
 			this.label1.TabIndex = 0;
 			this.label1.Text = "Source World";
-			this.label1.Click += new System.EventHandler(this.Label1Click);
 			// 
 			// label2
 			// 
@@ -79,10 +78,7 @@ namespace MCback
 			this.button1.Text = "Backup";
 			this.button1.UseVisualStyleBackColor = true;
 			this.button1.Click += new System.EventHandler(this.Button1Click);
-			// 
-			// folderBrowserDialog1
-			// 
-			this.folderBrowserDialog1.HelpRequest += new System.EventHandler(this.FolderBrowserDialog1HelpRequest);
+
 			// 
 			// btnSource
 			// 

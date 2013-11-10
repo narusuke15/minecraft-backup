@@ -32,20 +32,19 @@ namespace MCback
 	   	}
 		
 		#region data
+		//default
+		private readonly string DEFAULT_SOURCEPATH = "C:/";
+		private readonly string DEFAULT_DESTINATIONPATH = "C:/";
+		private readonly string DEFAULT_LASTBACKUPFOLDER = "NONE";
+		private readonly string DEFAULT_SAVEFOLDERNAME = "backup";
+		
 		private MCConfig _currentConfig;
 		public MCConfig currentConfig{
 	      	get{
 				if(_currentConfig != null){
 		    		return _currentConfig;
 				}else{
-					//default data
-					Debug.Write("config not founded. use default config");
-					_currentConfig = new MCConfig();
-					_currentConfig.sourcePath = "C:/";
-					_currentConfig.destinationPath = "C:/";
-					_currentConfig.saveFolderName = "wolrdBak";
-					_currentConfig.lastBackupFolder = "";
-					return _currentConfig;
+					return null;
 				}
 	      	}
 	   	}
@@ -57,17 +56,44 @@ namespace MCback
 		#endregion
 		
 		
-		//config
+		#region Config
 		public void SaveConfig (string fileName, MCConfig config) {
 			UpdateConfig(config);
 			string json = JsonConvert.SerializeObject(config);
 			WriteFile(fileName, json);
 		}
 		
+		public void SaveConfig (MCConfig config) {
+			SaveConfig(DEFUALT_CONFIG_FILENAME, config);
+		}
 		
 		public MCConfig LoadConfig (string json) {
-			MCConfig config = JsonConvert.DeserializeObject<MCConfig>(json);
-			UpdateConfig(config);
+			
+			try {
+				MCConfig config = JsonConvert.DeserializeObject<MCConfig>(json);
+				UpdateConfig(config);
+				return config;
+			}catch{
+				Debug.WriteLine("cannot load MCconfig");
+				return LoadDefaultConfig();
+			}
+		}
+		
+		public MCConfig LoadConfig () {
+			string json;
+			json = ReadFile();
+			return LoadConfig(json);
+		}
+		
+		public MCConfig LoadDefaultConfig () {
+			
+			Debug.WriteLine("load deafult config (mcmanager)");
+			MCConfig config = new MCConfig();
+			config.sourcePath = DEFAULT_SOURCEPATH;
+			config.destinationPath = DEFAULT_DESTINATIONPATH;
+			config.saveFolderName = DEFAULT_SAVEFOLDERNAME;
+			config.lastBackupFolder = DEFAULT_LASTBACKUPFOLDER;
+			_currentConfig = config;
 			return config;
 		}
 		
@@ -75,12 +101,15 @@ namespace MCback
 			_currentConfig = config;
 		}
 		
-		//text file 
+		#endregion
+		
+		#region file 
 		
 		public void WriteFile (string fileName, string text) {
 			StreamWriter st = File.CreateText(fileName);
 			st.WriteLine(text);
 			st.Close();
+			//File.SetAttributes(fileName, FileAttributes.Hidden);
 		}
 		
 		public void WriteFile (string text) {
@@ -94,10 +123,10 @@ namespace MCback
 				StreamReader stReader = new StreamReader(filePath);
 				string text = stReader.ReadLine();
 				stReader.Close();
-				Debug.Write("file found to read");
+				Debug.WriteLine("file found to read : " + text);
 				return text;
 			}else{
-				Debug.Write("files noit found");
+				Debug.WriteLine("files noit found");
 				return null;
 			}
 		}
@@ -115,5 +144,7 @@ namespace MCback
 		public void HiddenFile () {
 			HiddenFile(Directory.GetCurrentDirectory(), DEFUALT_CONFIG_FILENAME);
 		}
+		
+		#endregion
 	}
 }

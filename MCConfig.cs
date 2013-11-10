@@ -16,10 +16,15 @@ namespace MCback
 	public class MCConfig
 	{
 		#region Data
+		
 		private string _sourcePath;		//store source directory
 	    public string sourcePath {
-	          get{ return _sourcePath;  }
-	          set{ _sourcePath = value; }
+	    	get{
+				if(_sourcePath != null)
+				return _sourcePath;
+				else return "C:/";				
+			}
+	        set{ _sourcePath = value; }
 	    }
 		
 		private string _destinationPath;	//store destination directory
