@@ -1,36 +1,31 @@
-﻿
+﻿/// <summary>
+/// http://www.codeproject.com/Articles/572263/A-Reusable-Base-Class-for-the-Singleton-Pattern-in
+/// </summary>
+
 using System;
 
 namespace MCback{
-
-	public abstract class SingletonBase<T> where T : class
-	{
-	  #region Members
 	
+	/* USE EXAMPLE-----------------------------------------------
+	class SingletonExample : SingletonBase<SingletonExample>{
 	 
-	  private static readonly Lazy<T> sInstance = new Lazy<T>(() => CreateInstanceOfT());
+	  public string SomeString {get; set; }
 	
-	  #endregion
+	  private SingletonExample()  {}
+	}
+	-------------------------------------------------------------*/
 	
-	  #region Properties
-	
+	public abstract class SingletonBase<T> where T : class{
 
-	  public static T instance { get { return sInstance.Value; } }
+	  private static readonly Lazy<T> _instance = new Lazy<T>(() => CreateInstanceOfT());
 	
-	  #endregion
+	  public static T instance { get { return _instance.Value; } }
 	
-	  #region Methods
-	
-	  /// <summary>
-	  /// Creates an instance of T via reflection since T's constructor is expected to be private.
-	  /// </summary>
-	  /// <returns></returns>
-	  private static T CreateInstanceOfT()
-	  {
+	  private static T CreateInstanceOfT(){
 	    return Activator.CreateInstance(typeof(T), true) as T;
 	  }
 	
-	  #endregion
+
 	}
 
 }

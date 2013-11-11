@@ -78,7 +78,10 @@ namespace MCback
 			this.button1.Text = "Backup";
 			this.button1.UseVisualStyleBackColor = true;
 			this.button1.Click += new System.EventHandler(this.Button1Click);
-
+			// 
+			// folderBrowserDialog1
+			// 
+			this.folderBrowserDialog1.Description = "Select backup source";
 			// 
 			// btnSource
 			// 
@@ -115,6 +118,10 @@ namespace MCback
 			this.lblDestinationPath.Size = new System.Drawing.Size(252, 23);
 			this.lblDestinationPath.TabIndex = 6;
 			this.lblDestinationPath.Text = "path";
+			// 
+			// folderBrowserDialog2
+			// 
+			this.folderBrowserDialog2.Description = "Select backup destination";
 			// 
 			// txtFolder
 			// 
@@ -211,7 +218,7 @@ namespace MCback
 		private System.Windows.Forms.Label lblSourcePath;
 		private System.Windows.Forms.Button btnSetDestination;
 		private System.Windows.Forms.Button btnSource;
-		private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
+		public System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
 		private System.Windows.Forms.Button button1;
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Label label1;

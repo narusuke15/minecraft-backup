@@ -16,20 +16,9 @@ namespace MCback
 	/// <summary>
 	/// Description of MCConfigManager.
 	/// </summary>
-	public class MCConfigManager
+	public class MCConfigManager : SingletonBase<MCConfigManager>
 	{
-		private static MCConfigManager _instance;
-		public static MCConfigManager instance
-	   	{
-	      	get 
-	      	{
-		         if (_instance == null)
-		         {
-		            _instance = new MCConfigManager();
-		         }
-		         return _instance;
-	      	}
-	   	}
+		private MCConfigManager () {}
 		
 		#region data
 		//default
@@ -49,7 +38,7 @@ namespace MCback
 	      	}
 	   	}
 		
-		private bool _isHiddenConfigFile =false;  
+		private bool _isHiddenConfigFile = false;  
 			
 		private const string DEFUALT_CONFIG_FILENAME = ".config";
 		
@@ -105,10 +94,11 @@ namespace MCback
 		#region file 
 		
 		public void WriteFile (string fileName, string text) {
+			UnHiddenFile();
 			StreamWriter st = File.CreateText(fileName);
 			st.WriteLine(text);
 			st.Close();
-			//File.SetAttributes(fileName, FileAttributes.Hidden);
+			HiddenFile();
 		}
 		
 		public void WriteFile (string text) {
@@ -138,11 +128,19 @@ namespace MCback
 		//
 		public void HiddenFile (string directory, string fileName) {
 			string path = directory +"/"+ fileName;
-			if(_isHiddenConfigFile)
+			if(_isHiddenConfigFile || Directory.Exists(path))
 				File.SetAttributes(path, File.GetAttributes(path) | FileAttributes.Hidden);
 		}
 		public void HiddenFile () {
 			HiddenFile(Directory.GetCurrentDirectory(), DEFUALT_CONFIG_FILENAME);
+		}
+		public void UnHiddenFile (string directory, string fileName) {
+			string path = directory +"/"+ fileName;
+			if(_isHiddenConfigFile || Directory.Exists(path))
+				File.SetAttributes(path, File.GetAttributes(path) | FileAttributes.Normal );
+		}
+		public void UnHiddenFile () {
+			UnHiddenFile(Directory.GetCurrentDirectory(), DEFUALT_CONFIG_FILENAME);
 		}
 		
 		#endregion
